@@ -2,7 +2,7 @@
 
 
 ## out-of-cluster config using Minikube (This is where you want to start ideally!)
-Please watch [this](https://youtu.be/1XkWmT6HxMo) video and follow along to install Kubebot locally.
+Please watch [this](https://youtu.be/-ApGLGOV0vc) video and follow along to install Kubebot locally.
 
 * Git clone this repository.
 
