@@ -1,0 +1,53 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: trufflehog-cron
+  namespace: kubebot-server
+  labels:
+    app: cronjob-worker
+    component: cronjob
+spec:
+  schedule: "*/3 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: checkfile-container
+            image: us.gcr.io/kubebot-163519/utils/utils_checkfile:0.1.0
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: gitpersonaltoken
+              value: ""
+            - name: githubowner
+              value: "kubebot-user"
+            - name: githubacturl
+              value: "https://github.com/kubebot-user"
+            - name: slackwebhookurl
+              value: ""
+            args:
+            - /tmp/results/trufflehog_trufflehogtest.git
+            volumeMounts:
+            - name: results
+              mountPath: /tmp/results
+            - name: secretstore
+              mountPath: /secretstore
+          restartPolicy: OnFailure
+          volumes:
+          - name: results
+            emptyDir: {}
+          - name: secretstore
+            secret:
+              secretName: googlesecret
+          initContainers:
+          - name: trufflehog-init-container
+            image: us.gcr.io/kubebot-163519/tools/tools_trufflehog:0.1.0
+            imagePullPolicy: IfNotPresent
+            args:
+            - -o
+            - /tmp/results/trufflehog_trufflehogtest.git
+            - https://github.com/anshumanbh/trufflehogtest.git
+            volumeMounts:
+            - name: results
+              mountPath: /tmp/results
+          restartPolicy: OnFailure
