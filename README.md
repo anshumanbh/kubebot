@@ -69,6 +69,7 @@ PS - All the Docker images of the API server, Subscription Worker(s) and Tool Wo
 
 ## Demo Videos
 
+* [Installing Kubebot Locally](https://youtu.be/1XkWmT6HxMo)
 * [Running nmap](https://youtu.be/R2aMWGyldlI)
 * [Running sub-domain bruteforcing tools](https://youtu.be/6SdkjrRGFhI)
 * [Running git searching tools](https://youtu.be/aip1Q0aCBhQ)
