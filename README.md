@@ -9,6 +9,11 @@ A security testing Slackbot built with a Kubernetes backend on the Google Cloud 
 ![Kubebot Architecture](/imgs/KubeBot_architecture.png)
 
 
+## Demo
+
+Please watch this video - https://youtu.be/mX1Cf7ZpiVs
+
+
 ## Data Flow
 
 * 1 - API request (tool, target, options) initiated from Slackbot, sent to the API server, which is running as a Docker container on a Kubernetes (K8s) cluster and can be scaled.
@@ -69,6 +74,7 @@ PS - All the Docker images of the API server, Subscription Worker(s) and Tool Wo
 
 ## Demo Videos
 
+* [Kubebot in action - Main Demo](https://youtu.be/mX1Cf7ZpiVs)
 * [Installing Kubebot Locally](https://youtu.be/-ApGLGOV0vc)
 * [Running nmap](https://youtu.be/R2aMWGyldlI)
 * [Running sub-domain bruteforcing tools](https://youtu.be/6SdkjrRGFhI)

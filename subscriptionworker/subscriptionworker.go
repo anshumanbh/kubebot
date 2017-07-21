@@ -493,6 +493,9 @@ func tooljob(qmsg Message) {
 				argstring = []string{"-token", os.Getenv("gitpersonaltoken"), "-org", strings.Split(qmsg.Target, ".")[1], "-toolName", "repo-supervisor", "-output", resultsmountpath + "/results.json"}
 			case "wfuzz":
 				url = os.Getenv("dockerrepourl") + "/tools/tools_wfuzz:" + os.Getenv("dockerrepoversion")
+				if qmsg.Target == "defcon.kubebot.io" {
+					qmsg.Target = "104.198.4.57"
+				}
 				argstring = []string{"-w", "/data/SecLists/Discovery/Web_Content/tomcat.txt", "--hc", "404,429,400", "-o", "csv", "http://" + qmsg.Target + "/FUZZ/", resultsmountpath + "/results.csv"}
 			}
 			wg.Add(1)
