@@ -9,7 +9,7 @@ WFUZZ_DATASET = wfuzzds
 REPOSUPERVISOR_DATASET = reposupervisords
 WFUZZ_TABLE = wfuzz_tomcat_test
 REPOSUPERVISOR_TABLE = reposupervisor_test
-GITTOKEN =
+GITTOKEN = 
 
 .PHONY: all build
 
@@ -18,11 +18,6 @@ all: build
 build: setup images deployments
 
 setup:
-	go get github.com/golang/dep
-	go install github.com/golang/dep/cmd/dep
-	cd api/ && dep init && dep ensure k8s.io/client-go@^2.0.0
-	cd subscriptionworker/ && dep init && dep ensure k8s.io/client-go@^2.0.0
-	cd utils/ && dep init
 	go run setup-scripts/main.go -project $(PROJECT_ID) -gac $(CREDS_FILEPATH) -wfdataset $(WFUZZ_DATASET) -wftable $(WFUZZ_TABLE) -rsdataset $(REPOSUPERVISOR_DATASET) -rstable $(REPOSUPERVISOR_TABLE) -topic $(TOPIC) -subscription $(SUBSCRIPTION)
 	for toolname in $(TOOLLIST)  ; do \
 		if test $$toolname != gitrob ; then \

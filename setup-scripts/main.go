@@ -55,16 +55,16 @@ func createBQ(ctx context.Context, ds string, tb string, schema bigquery.Schema,
 	bqClient, err := bigquery.NewClient(ctx, proj)
 	check(err)
 
-	err = bqClient.Dataset(ds).Create(ctx)
+	err = bqClient.Dataset(ds).Create(ctx, nil)
 	if err != nil {
 		fmt.Println(ds + " already exists")
-		err = bqClient.Dataset(ds).Table(tb).Create(ctx, schema)
+		err = bqClient.Dataset(ds).Table(tb).Create(ctx, &bigquery.TableMetadata{Schema: schema})
 		if err != nil {
 			fmt.Println(tb + " already exists. Deleting it now..")
 			err = bqClient.Dataset(ds).Table(tb).Delete(ctx)
 			check(err)
 			fmt.Println(tb + " deleted. Creating it again now..")
-			err = bqClient.Dataset(ds).Table(tb).Create(ctx, schema)
+			err = bqClient.Dataset(ds).Table(tb).Create(ctx, &bigquery.TableMetadata{Schema: schema})
 			check(err)
 			fmt.Println(tb + " recreated")
 		} else if err == nil {
@@ -72,7 +72,7 @@ func createBQ(ctx context.Context, ds string, tb string, schema bigquery.Schema,
 		}
 	} else if err == nil {
 		fmt.Println(ds + " created")
-		err = bqClient.Dataset(ds).Table(tb).Create(ctx, schema)
+		err = bqClient.Dataset(ds).Table(tb).Create(ctx, &bigquery.TableMetadata{Schema: schema})
 		check(err)
 		fmt.Println(tb + " created")
 	}
@@ -131,7 +131,7 @@ func main() {
 				fmt.Println(*topic + " created")
 			}
 
-			newSub, err := psClient.CreateSubscription(ctx, *subscription, newTopic, 0, nil)
+			newSub, err := psClient.CreateSubscription(ctx, *subscription, pubsub.SubscriptionConfig{Topic: newTopic})
 			check(err)
 
 			newsubExists, err := newSub.Exists(ctx)
