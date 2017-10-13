@@ -29,6 +29,7 @@ type Slackbot struct {
 	Token       string `schema:"token"`
 	Userid      string `schema:"user_id"`
 	Username    string `schema:"user_name"`
+	Triggerid   string `schema:"trigger_id"`
 }
 
 func check(e error) {

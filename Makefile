@@ -2,14 +2,14 @@ VERSION = 0.1.0
 PROJECT_ID = kubebot-163519
 TOOLLIST = enumall gitallsecrets gitrob gitsecrets gobuster nmap subbrute sublist3r trufflehog wfuzz
 UTILSLIST = checkfile converttobq wfuzzbasicauthbrute
-CREDS_FILEPATH = /Users/abhartiya/Desktop/personal-creds.json
+CREDS_FILEPATH = /Users/redteam/Downloads/personal-creds.json
 TOPIC = tool_topic
 SUBSCRIPTION = tool_sub
 WFUZZ_DATASET = wfuzzds
 REPOSUPERVISOR_DATASET = reposupervisords
 WFUZZ_TABLE = wfuzz_tomcat_test
 REPOSUPERVISOR_TABLE = reposupervisor_test
-GITTOKEN = 
+GITTOKEN = <enter your github token>
 
 .PHONY: all build
 

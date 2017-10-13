@@ -15,7 +15,6 @@ Please watch [this](https://youtu.be/-ApGLGOV0vc) video and follow along to inst
 * Rename the `.gitrobrc.sample` file in the `tools/gitrob/client` and `tools/gitrob/server` directories to `.gitrobrc` and make sure you add your environment variables correctly.
 
 * Type `make build`. This will take a few minutes so please be patient. This will:
-    * Install `dep`. Ensure we have all the libraries and the correct versions we need.
     * Creates the appropriate Google PubSub topic and subscription, Google BigQuery datasets and tables and Github repositories for all the tools.
     * Build the Docker images for the API server, Subscription Worker, all the Utilities and all the tools. If, for some reason, an image does not get built, please build it manually. You can view the images by typing `docker images`.
     * Create a namespace `kubebot-server` inside the K8s cluster.
