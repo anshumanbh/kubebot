@@ -4,7 +4,7 @@ MAINTAINER Anshuman Bhartiya <anshuman.bhartiya@gmail.com>
 ADD . /data
 WORKDIR /data/thog
 
-RUN apt-get update && apt-get install -y python-pip
+RUN apt-get update && apt-get install -y python-pip jq
 RUN pip install -r requirements.txt
 RUN chmod +x truffleHog/truffleHog.py
 
@@ -25,7 +25,5 @@ WORKDIR /data
 
 RUN go get github.com/google/go-github/github && go get github.com/satori/go.uuid && go get golang.org/x/oauth2
 RUN go build -o gitallsecrets .
-
-ENV PATH $PATH:/root/.nvm/versions/node/v7.10.0/bin
 
 ENTRYPOINT ["./gitallsecrets"]
