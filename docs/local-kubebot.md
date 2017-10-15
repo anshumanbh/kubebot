@@ -6,7 +6,7 @@ Please watch [this](https://youtu.be/-ApGLGOV0vc) video and follow along to inst
 
 * Git clone this repository.
 
-* Start minikube by typing `minikube start`
+* Start minikube by typing `minikube start --kubernetes-version v1.8.0 --bootstrapper kubeadm`
 
 * Once minikube starts, type `eval $(minikube docker-env)`. You are now inside the minikube's Docker environment i.e. you are essentially inside a single node K8s cluster running locally which is nothing but a replica of what it would look like when you deploy the infrastructure remotely. But, this is much easier for development and testing since everything is local for now.
 
