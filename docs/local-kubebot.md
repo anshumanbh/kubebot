@@ -1,12 +1,18 @@
 # How to run Kubebot locally for development and testing?
 
 
+*NOTE:*
+This has been tested to run with:
+* minikube version v0.22.3
+* Kubernetes version 1.7.5
+* The cronjob functionality only works with Kubernetes Version >= 1.8 since it uses the `batch/v1beta1` API version so it will not work with all other features just yet since starting minikube starts version `1.7.5` by default, at the time of me writing this. If you want to use cronjobs, instead of using `minikube start` as given below, you should use `minikube start --kubernetes-version v1.8.0 --bootstrapper kubeadm`. But, then all other features won't work because the client-go library doesn't support Kubernetes 1.8 just yet. Its a work in progress. 
+
 ## out-of-cluster config using Minikube (This is where you want to start ideally!)
 Please watch [this](https://youtu.be/-ApGLGOV0vc) video and follow along to install Kubebot locally.
 
 * Git clone this repository.
 
-* Start minikube by typing `minikube start --kubernetes-version v1.8.0 --bootstrapper kubeadm`
+* Start minikube by typing `minikube start`. 
 
 * Once minikube starts, type `eval $(minikube docker-env)`. You are now inside the minikube's Docker environment i.e. you are essentially inside a single node K8s cluster running locally which is nothing but a replica of what it would look like when you deploy the infrastructure remotely. But, this is much easier for development and testing since everything is local for now.
 
