@@ -101,7 +101,7 @@ func main() {
 	CheckIfError(err)
 
 	// retrieving all the endpoints from wfuzz table for that target
-	wfquery := bqclient.Query(`SELECT Request FROM [` + projectID + `:` + wfDS + `.` + wfT + `] Where Request IS NOT null GROUP BY Request`)
+	wfquery := bqclient.Query("SELECT Request FROM `" + projectID + "." + wfDS + "." + wfT + "` Where Request IS NOT null GROUP BY Request")
 	it1, err := wfquery.Read(ctx)
 	CheckIfError(err)
 
@@ -120,7 +120,7 @@ func main() {
 	}
 
 	// retrieving all the secrets from repo supervisor table for that target
-	rsquery := bqclient.Query(`SELECT Secret FROM [` + projectID + `:` + rsDS + `.` + rsT + `] Where Secret IS NOT null GROUP BY Secret`)
+	rsquery := bqclient.Query("SELECT Secret FROM `" + projectID + "." + rsDS + "." + rsT + "` Where Secret IS NOT null GROUP BY Secret")
 	it2, err := rsquery.Read(ctx)
 	CheckIfError(err)
 
