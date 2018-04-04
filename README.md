@@ -3,6 +3,8 @@ A security testing Slackbot built with a Kubernetes backend on the Google Cloud 
 
 ![Kubebot Logo](/imgs/KubeBot_logo.png)
 
+NOTE: I am not actively maintaining this project anymore. I am working on v2 of Kubebot along with a couple other folks which will likely be presented at one of the upcoming security conferences. 
+
 
 ## Architecture
 
